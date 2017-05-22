@@ -79,7 +79,7 @@ function asciiRender(dataArray, style){
     }
 
     var generateClassAttribute = function(key){
-        if (colorClass[key].length) return 'class="' + colorClass[key] + '" '
+        if (typeof colorClass[key] !== "undefined" && colorClass[key].length) return 'class="' + colorClass[key] + '" ';
         return ''; // it's not a class so ignore
     }
 
