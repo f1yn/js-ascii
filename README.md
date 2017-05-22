@@ -21,7 +21,7 @@ Import them as you would with any Node.js module:
     import asciiRender from '{path-to-file}/render';
 
     // Node.js require
-    var asciiPOrter = require('{path-to-file}/porter')  // porter can be used in live Node Environment
+    var asciiPorter = require('{path-to-file}/porter')  // porter can be used in live Node Environment
     // render cannot be effectively used in a Node.js environment, but it can still be compiled this way into a live one
 ```
 
