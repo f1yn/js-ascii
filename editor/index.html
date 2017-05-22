@@ -78,7 +78,7 @@
         txtArea.value = front + text + back;
         strPos = strPos + text.length;
         if (br == "ie") {
-            txtarea.focus();
+            txtArea.focus();
             var ieRange = document.selection.createRange();
             ieRange.moveStart ('character', -txtArea.value.length);
             ieRange.moveStart ('character', strPos);
@@ -90,7 +90,7 @@
             txtArea.focus();
         }
 
-        txtaArea.scrollTop = scrollPos;
+        txtArea.scrollTop = scrollPos;
     }
 
     var samples = [
