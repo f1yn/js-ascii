@@ -3,15 +3,15 @@
 js-ascii is a small JavaScript utility for rendering ascii art in the browser. It takes ascii art following the format of neofetch's ascii art,
 and converts it into a processable array.
 
-(this project is from a larger project that I am working on <- a merge is expected)
+(this project is from a larger project that I am working on, and a merge is expected)
 
 The rendering engine can be used to render the Arrays into a valid html, with full color support (any valid CSS compliant color value).
 
 ## How to use
 ### Node.js
-I have included a basic implementation that allows for importing both `porter.js` (the utility for porting neofetch asciiart), and `render.js` (the utility for rendering the processed art in a client-side environment).
+I have included a basic implementation that allows for importing both `porter.js` (the utility for porting [neofetch](https://github.com/dylanaraps/neofetch/tree/master/ascii/distro)  ascii art), and `render.js` (the utility for rendering the processed art) in a client-side environment.
 
-This implementation is intended for embedded compiling with Webpack, but you can implement it any way you see fit.
+This implementation is intended for embedded compiling with [Webpack](https://github.com/webpack/webpack), but you can implement it any way you see fit.
 
 Import them as you would with any Node.js module:
 
@@ -22,7 +22,7 @@ Import them as you would with any Node.js module:
 
     // Node.js require
     var asciiPOrter = require('{path-to-file}/porter')  // porter can be used in live Node Environment
-    // render cannot be effectivly used in a Node.js environment, but it can still be compiled this way into a live one
+    // render cannot be effectively used in a Node.js environment, but it can still be compiled this way into a live one
 ```
 
 I also included a dumb little command line utility.
@@ -50,7 +50,7 @@ Include these scripts at the top of your webpage in the header file:
 
 The values are processed from left to right, and each item in the array is evaluated for the following criteria:
 
-   1. Is it an interger? If it has a value of zero, treat it as a breakline, else - treat it as a number of whitespaces
+   1. Is it an integer? If it has a value of zero, treat it as a breakline, else - treat it as a number of whitespaces
    2. Is it a string? If so, search the string for any template strings `${c1,c2,c3,..c9}` and colorize them.
    3. Is it an sub Array? Treat the first value as the number of repeats, and the first character of the second value string
    as the string to be repeated.
@@ -69,14 +69,14 @@ Assuming this check takes place, the resulting HTML after loading an valid Array
             // ^- If the string starts with '.' the rest of the string is parsed as a class name (useful for animations/transitions)
             // ^-  otherwise will attempt to parse it as any css valid color (e.g. #rgb #rrggbb rgb() rgba() hsv()) - whatever the client-side browser supports
         single: '{string}', // overides all color values, using only one css valid color
-        block: '{string}' // replaces all input chraracters (except whitespace) with the first chracter of the specified string
+        block: '{string}' // replaces all input characters (except whitespace) with the first character of the specified string
     }
 ```
 
 `asciiRender(true)` will return an Array with a list of Numbers representing valid color code numbers.
 
 ## Utilities
-Because of the amount of overhead my current project has, I've had to create a couple tools to help automate the process so I can develop at a faster pace. These tools include a Node.js CLI Utility, and a clinet-side utility for creating/editing art.
+Because of the amount of overhead my current project has, I've had to create a couple tools to help automate the process so I can develop at a faster pace. These tools include a Node.js CLI Utility, and a client-side utility for creating/editing art.
 
 ### Command line utility
 The command line utility can be called using Node.js from the terminal using the following syntax:
@@ -85,7 +85,7 @@ The command line utility can be called using Node.js from the terminal using the
     node ./{path_to_directory} ./{path_to_utf8_input_file}
 ```
 
-The aforementioned command-line utility will output both a regular output array as plaintext, as well as a refactored (compressed) version (containing repeat character removal).
+The aforementioned command-line utility will output both a regular output array as plain-text, as well as a refactored (compressed) version (containing repeat character removal).
 
 ### ASCII ART Editor
 I have also included a simple, single-page HTML app that loads both `porter.js` and `render.js`, which I have been using for editing and porting art to my project. There are various sections for inputting plain text, and various inputs for colors.
