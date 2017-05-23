@@ -58,7 +58,7 @@ The values are processed from left to right, and each item in the array is evalu
 Assuming this check takes place, the resulting HTML after loading an valid Array into `asciiRender.js` (as it's first parameter):
 
 ```html
-   1<span style="color:{your custom-defined-color}"><br>                helloaaaa</span>
+   1<span style="color:{your custom-defined-color}">hello world<br>                helloaaaa</span>
 ```
 
 `asciiRender` also takes an additional `style` argument, which allows modifying the output of the ascii render;
