@@ -58,7 +58,7 @@ function asciiRender(dataArray, style){
         switch (typeof dataNode) {
             case "string":
                 // if renderBlock is set, then replace the string's characters (excluding color nodes) with the character; otherwise just send the raw data through
-                outputString += (renderBlock) ? dataNode.replace(/[^\$\{c\d\}]/g, renderBlock) : dataNode;
+                outputString += (renderBlock) ? dataNode.replace(/[^\$\{c\d\}]/g, renderBlock) : dataNode; // ToDO: fixed regex to replace all characters except mentioned pattern
                 break;
             case "number":
                 // if the dataNode is simply "0", treat it as a breakline, otherwise, treat it as whitespace
@@ -90,9 +90,10 @@ function asciiRender(dataArray, style){
 
     // replace the output so the templating
     var numSpans = 0;
+
     outputString = outputString.replace(/\$\{c\d+\}/g, (match) => {
         numSpans++; // increment span counter so we have a rough idea as to whether we need to add closure
-        var matchString = match.replace(/\$\{|}/g, '');
+        var matchString = match.replace(/\$\{|}/g, ''); // get the value thats between the markers (i.e ${ + val + }
 
         return (typeof style[matchString] === "string") ? '</span><span ' + generateClassAttribute(matchString) + generateEndStyle(matchString) + '>' : '';
 
