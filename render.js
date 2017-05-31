@@ -100,7 +100,7 @@ function asciiRender(dataArray, style){
     }).replace('</span>', ''); // get rid of the first orphan span close tag
     // just dump the entire HTML string (recommended)
 
-    if (numSpans) outputString += '</span>'; // adds closure if span tags are resent
+    if (numSpans) outputString += '</span>'; // adds closure if span tags are present
     
     return outputString
 }
