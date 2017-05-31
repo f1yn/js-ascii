@@ -58,7 +58,9 @@ function asciiRender(dataArray, style){
         switch (typeof dataNode) {
             case "string":
                 // if renderBlock is set, then replace the string's characters (excluding color nodes) with the character; otherwise just send the raw data through
-                outputString += (renderBlock) ? dataNode.replace(/[^\$\{c\d\}]/g, renderBlock) : dataNode; // ToDO: fixed regex to replace all characters except mentioned pattern
+                outputString += (renderBlock) ? dataNode.replace(/(\${c\d+})|./g, function (m0, m1){
+                    return (m1) ? m1 : renderBlock; // only match second match group (which is any group matching the ${c\d} pattern.
+                }) : dataNode; // or simply returns string since renderBLock is not set
                 break;
             case "number":
                 // if the dataNode is simply "0", treat it as a breakline, otherwise, treat it as whitespace
