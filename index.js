@@ -4,7 +4,7 @@
 
 var fs = require('fs');
 var path = require('path');
-var porter = require('./porter')
+var porter = require('./porter');
 
 var args = process.argv.slice(2), // crush any params that aren't relevant
     filepath = args.pop(); // get dat last argument
@@ -21,9 +21,8 @@ if (fs.existsSync(joinPath)) {
 
     console.log(`HEAVY RESULT: \n ${output.heavy}\n`);
     console.log(`COMPRESSED RESULT: \n ${output.compressed}\n`);
-
-
+    
 } else {
     console.error('file does not exist!'); // that was easy
-    return 0;
+    return 0; // because why not
 }
