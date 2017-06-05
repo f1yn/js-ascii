@@ -7,6 +7,7 @@
 
 // should set to const -> but es5
 var validColorCodes = [1,2,3,4,5,6,7,8,9]; // define what colors are rendered as valid vs non valid - should match templating regex
+// ToDO: consider pulling above statement into ascii renderer function. (May reduce optimization, but should enhance security and prevention of failure).
 
 function asciiRender(dataArray, style){
     if (typeof dataArray === "boolean"){
