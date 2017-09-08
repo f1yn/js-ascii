@@ -3,7 +3,7 @@
 js-ascii is a small JavaScript utility for rendering ascii art in the browser. It takes ascii art following the format of neofetch's ascii art,
 and converts it into a processable array.
 
-(this project is from a larger project that I am working on, and a merge is expected)
+**A live example of js-ascii in action can be seen on [swlinux.org](https://swlinux.org/) ([GitHub](https://github.com/flynnham/swlinux.org))**
 
 The rendering engine can be used to render the Arrays into a valid html, with full color support (any valid CSS compliant color value).
 
