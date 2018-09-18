@@ -1,0 +1,39 @@
+{
+  "name": "js-ascii",
+  "version": "2.0.0",
+  "description": "An ascii art parser and renderer",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "npm run watch",
+    "watch": "nodemon -e js --ignore node_modules/ --ignore dist/ -x 'npm run build::babel'",
+    "clean": "rimraf ./dist && mkdir ./dist",
+    "build::babel::index": "babel ./source.js > ./dist/index.js",
+    "build::babel::main": "babel ./lib --out-dir ./dist/lib",
+    "build::babel::client": "babel ./dist/condensed.js > ./dist/client.js",
+    "build::babel": "concurrently -n 'main,index,client' 'npm run build::babel::main' 'npm run build::babel::index' 'npm run build::babel::client'",
+    "build::rollup": "rollup ./source.js  --file ./dist/condensed.js --format iife --name jsAscii",
+    "build": "npm run clean && npm run build::rollup && npm run build::babel",
+    "test": "mocha test/spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flynnham/js-ascii.git"
+  },
+  "author": "Flynn Buckingham",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flynnham/js-ascii/issues"
+  },
+  "homepage": "https://github.com/flynnham/js-ascii#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-rc.3",
+    "@babel/core": "^7.0.0-rc.3",
+    "@babel/plugin-syntax-decorators": "^7.0.0-rc.3",
+    "@babel/preset-env": "^7.0.0-rc.3",
+    "concurrently": "^4.0.1",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.4",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.66.0"
+  }
+}
