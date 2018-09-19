@@ -35,6 +35,25 @@ function extractColorCodes(jsAsciiArray) {
   });
 }
 /**
+ * A replacement for native non-standard String.repeat
+ * @param  {String} string the string to repeat
+ * @param  {Number} [times=1] The number of times to repeat the provided string
+ * @return {String} The repeated string
+ */
+
+
+function repeatString(string) {
+  var times = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  var buffer = '';
+  var i = times;
+
+  while (times--) {
+    buffer += string;
+  }
+
+  return buffer;
+}
+/**
  * Converts a jsAscii formatted array to it's serialized String value
  * @param  {Array} asciiData the jsAscii format
  * @param  {String} [breakline='\n'] the default line break used
@@ -79,7 +98,7 @@ function serializeAsciiData(asciiData) {
       case 'number':
         // if the node is simply 0, treat it as a breakline,
         // otherwise treat it as whitespace
-        chunks.push(node > 0 ? ' '.repeat(node) : breakline);
+        chunks.push(node > 0 ? repeatString(' ', node) : breakline);
         break;
 
       case "object":

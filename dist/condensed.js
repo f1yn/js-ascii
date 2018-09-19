@@ -71,6 +71,21 @@ var jsAscii = (function (exports) {
 	}
 
 	/**
+	 * A replacement for native String.repeat
+	 * @param  {String} string the string to repeat
+	 * @param  {Number} [times=1] The number of times to repeat the provided string
+	 * @return {String} The repeated string
+	 */
+	function repeatString(string, times = 1) {
+		let buffer = '';
+
+		while (times--) {
+			buffer += string;
+		}
+		return buffer;
+	}
+
+	/**
 	 * Converts a jsAscii formatted array to it's serialized String value
 	 * @param  {Array} asciiData the jsAscii format
 	 * @param  {String} [breakline='\n'] the default line break used
@@ -110,7 +125,7 @@ var jsAscii = (function (exports) {
 				case 'number':
 					// if the node is simply 0, treat it as a breakline,
 					// otherwise treat it as whitespace
-					chunks.push((node > 0) ? ' '.repeat(node) : breakline);
+					chunks.push((node > 0) ? repeatString(' ', node) : breakline);
 					break;
 				case "object":
 					if (typeof node.length === 'number') {

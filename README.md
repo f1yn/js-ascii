@@ -1,91 +1,106 @@
 # js-ascii
 
-js-ascii is a small JavaScript utility for rendering ascii art in the browser. It takes ascii art following the format of neofetch's ascii art,
-and converts it into a processable array.
+[![Build Status](https://travis-ci.org/flynnham/js-ascii.svg?branch=master)](https://travis-ci.org/flynnham/js-ascii)
+[![dependencies Status](https://david-dm.org/flynnham/js-ascii/status.svg)](https://david-dm.org/flynnham/js-ascii)
+[![devDependencies Status](https://david-dm.org/flynnham/js-ascii/dev-status.svg)](https://david-dm.org/flynnham/js-ascii?type=dev)
 
-The rendering engine can be used to render the Arrays into a valid html, with full color support (any valid CSS compliant color value).
+(jsAscii) is a JavaScript utility library for serializing and rendering ASCII
+art in the browser. It takes ASCII art following the format of neofetch's
+ascii art, and converts it into a processable array.
+
+The rendering engine can be used to render the arrays into various serialized
+formats, including HTML and most consoles. The library additionally allows
+the specification of custom output formats via an internal API.
+
+## Installing
+
+### via npm
+```bash
+npm i -S flynnham/js-ascii
+```
 
 ## How to use
+
 ### Node.js
-I have included a basic implementation that allows for importing both `porter.js` (the utility for porting [neofetch](https://github.com/dylanaraps/neofetch/tree/master/ascii/distro)  ascii art), and `render.js` (the utility for rendering the processed art) in a client-side environment.
 
-This implementation is intended for embedded compiling with [Webpack](https://github.com/webpack/webpack), but you can implement it any way you see fit.
+Require the jsAscii module and use the api as demonstrated below:
 
-Import them as you would with any Node.js module:
+```js
+const jsAscii = require('js-ascii');
 
-```javascript
-    // ES6 style (for babel compiled environments)
-    import asciiPorter from '{path-to-file}/porter';
-    import asciiRender from '{path-to-file}/render';
+// converts raw string art to a raw JavaScript array implementation
+const formattedArt = jsAscii.convert("${c1}Hello ${c2}World");
 
-    // Node.js require
-    var asciiPorter = require('{path-to-file}/porter')  // porter can be used in live Node Environment
-    // render cannot be effectively used in a Node.js environment, but it can still be compiled this way into a live one
+const colorizedHTML = jsAcii.renderToHTML(formattedArt, {
+	// any valid CSS color
+	styles: {
+		1: 'red',
+		2: '#00f',
+	},
+});
+// outputs: <span style="color:red">Hello </span><span style="color:#00f">World</span>
+
+const colorizedConsole = jsAcii.renderToTTY(formattedArt, {
+	// specifc console color cold (Number) or
+	// string name
+	styles: {
+		1: 'red',
+		2: 'blue',
+	}
+});
+// outputs: Hello World
+// (colorized version logo for STDOUT/console)
+
 ```
 
-I also included a dumb little command line utility.
+### Browser
 
-### Client-side
-I have made these scripts using Ecmascript5 standards, so it should effectively be able to be used in most current desktop browsers.
-Include these scripts at the top of your webpage in the header file:
+If using a bundling utility, you can include the module the same way you would include
+the Node.js api. Otherwise, concatenated dist files can also be loaded in.
 
-```html
-<head>
-    <!-- your header code -->
-    <script src="{path-to-file}/porter.js"> <!-- processes raw art on-demand -->
-    <script src="{path-to-file}/render.js"> <!--  renders processed art in the browser -->
-</head>
+#### Pre-transpiled import (ES5)
+
+If you are using browser modules (or not using babel), an ES5 friendly version
+can be included like so:
+
+```js
+// standard import
+import jsAscii from 'js-ascii';
+import { convert, renderToHTML } from 'js-ascii';
+
+// named imports (for improved tree shaking)
+import convert from 'js-ascii/dist/lib/convert';
+import renderToHTML from 'js-ascii/dist/lib/formats/html';
+
+// full dist IFFE (for environments without bundlers)
+import 'js-acii/dist/client';
 ```
 
-### Universal syntax:
+#### Non-transpiled (ES2015+)
 
-`asciiPort` only takes a single parameter, which is a string containing the ascii artwork. It returns an object Array.
+If you are using your own post-process transpiler, you can include the full
+non-transpiled implementation like so:
 
-```javascript
-   // sample output array:
-   ["1${c1}hello world", 0, 16, "hello", [4, "a"]]
+```js
+// standard import
+import jsAscii from 'js-ascii/source';
+import { convert, renderToHTML } from 'js-ascii/source';
+
+// named imports (for improved tree shaking)
+import convert from 'js-ascii/lib/convert';
+import renderToHTML from 'js-ascii/lib/formats/html';
+
+// full dist IFFE (for environments without bundlers)
+import 'js-acii/dist/condensed';
 ```
 
-The values are processed from left to right, and each item in the array is evaluated for the following criteria:
-
-   1. Is it an integer? If it has a value of zero, treat it as a breakline, else - treat it as a number of whitespaces
-   2. Is it a string? If so, search the string for any template strings `${c1,c2,c3,..c9}` and colorize them.
-   3. Is it an sub Array? Treat the first value as the number of repeats, and the first character of the second value string
-   as the string to be repeated.
-
-Assuming this check takes place, the resulting HTML after loading an valid Array into `asciiRender.js` (as it's first parameter):
-
-```html
-   1<span style="color:{your custom-defined-color}">hello world<br>                helloaaaa</span>
-```
-
-`asciiRender` also takes an additional `style` argument, which allows modifying the output of the ascii render;
-
-```json5
-    {
-        c1...9: '{string}', // colorcode/class setting
-            // ^- If the string starts with '.' the rest of the string is parsed as a class name (useful for animations/transitions)
-            // ^-  otherwise will attempt to parse it as any css valid color (e.g. #rgb #rrggbb rgb() rgba() hsv()) - whatever the client-side browser supports
-        single: '{string}', // overides all color values, using only one css valid color
-        block: '{string}' // replaces all input characters (except whitespace) with the first character of the specified string
-    }
-```
-
-`asciiRender(true)` will return an Array with a list of Numbers representing valid color code numbers.
-
-## Utilities
-Because of the amount of overhead my current project has, I've had to create a couple tools to help automate the process so I can develop at a faster pace. These tools include a Node.js CLI Utility, and a client-side utility for creating/editing art.
-
-### Command line utility
-The command line utility can be called using Node.js from the terminal using the following syntax:
-```bash
-    # only takes a single argument: a path to a UTF8 file containing raw neofetch-like Ascii art
-    node ./{path_to_directory} ./{path_to_utf8_input_file}
-```
-
-The aforementioned command-line utility will output both a regular output array as plain-text, as well as a refactored (compressed) version (containing repeat character removal).
+### API documentation
+Coming soon (refer to included inline `/lib` documentation)
 
 ### ASCII ART Editor
-I have also included a simple, single-page HTML app that loads both `porter.js` and `render.js`, which I have been using for editing and porting art to my project. There are various sections for inputting plain text, and various inputs for colors.
+A simple single-page HTML application has also been included in `/editor` fireactory
+of this repository.
 
-At the bottom of the page, both of the compiled outputs will be updated as the input field changes (or when a page click occurs). Other useful functionality is shown within the editor itself.
+At the bottom of the page, both of the compiled outputs will be updated as the input
+field changes (or when a page click occurs). Other useful functionality is shown
+within the editor itself.
