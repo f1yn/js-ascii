@@ -80,8 +80,8 @@ function convertAscii(inputString) {
   .replace(/\"\]\"/g, '"],"') // empty string removal
   .replace(/\,\"\"\,/g, ',');
   return {
-    heavy: heavy,
-    compressed: compressed
+    heavy: JSON.parse(heavy),
+    compressed: JSON.parse(compressed)
   };
 }
 

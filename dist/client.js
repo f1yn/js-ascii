@@ -80,8 +80,8 @@ var jsAscii = function (exports) {
     .replace(/\"\]\"/g, '"],"') // empty string removal
     .replace(/\,\"\"\,/g, ',');
     return {
-      heavy: heavy,
-      compressed: compressed
+      heavy: JSON.parse(heavy),
+      compressed: JSON.parse(compressed)
     };
   }
   /**
@@ -112,7 +112,7 @@ var jsAscii = function (exports) {
     });
   }
   /**
-   * A replacement for native String.repeat
+   * A replacement for native non-standard String.repeat
    * @param  {String} string the string to repeat
    * @param  {Number} [times=1] The number of times to repeat the provided string
    * @return {String} The repeated string

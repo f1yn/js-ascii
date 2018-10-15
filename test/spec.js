@@ -10,8 +10,8 @@ let parsedFormats = {};
 
 describe('converter', () => {
 	it('converts ascii-art to raw memory', () => {
-		for (const [name, string] of Object.entries(jsa.convert(testAscii))) {
-			parsedFormats[name] = JSON.parse(string);
+		for (const [name, output] of Object.entries(jsa.convert(testAscii))) {
+			parsedFormats[name] = output;
 		}
 	});
 });
