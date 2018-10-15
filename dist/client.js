@@ -248,7 +248,7 @@ var jsAscii = function (exports) {
   };
 
   var generateColorAttribute = function generateColorAttribute(styles, code) {
-    return typeof styles[code] === 'string' ? " styles=\"color:".concat(styles[code], "\"") : '';
+    return typeof styles[code] === 'string' ? " style=\"color:".concat(styles[code], "\"") : '';
   };
 
   var renderToHTML = buildAsciiRenderer({
@@ -418,6 +418,11 @@ var jsAscii = function (exports) {
     renderToHTML: renderToHTML,
     renderToTTY: renderToTTY
   };
+
+  if ((typeof window === "undefined" ? "undefined" : _typeof(window)) === 'object' && _typeof(exports) === 'object') {
+    window.jsAscii = exports;
+  }
+
   exports.convert = convertAscii;
   exports.buildRenderer = buildAsciiRenderer;
   exports.renderToHTML = renderToHTML;

@@ -14,3 +14,7 @@ export default {
 	renderToHTML,
 	renderToTTY,
 };
+
+if (typeof window === 'object' && typeof exports === 'object') {
+	window.jsAscii = exports;
+}

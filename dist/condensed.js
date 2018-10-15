@@ -200,7 +200,7 @@ var jsAscii = (function (exports) {
 		typeof colorClass[code] === 'string' ? ` class="${colorClass[code]}"` : '');
 
 	const generateColorAttribute = (styles, code) => (
-		typeof styles[code] === 'string' ? ` styles="color:${styles[code]}"` : '');
+		typeof styles[code] === 'string' ? ` style="color:${styles[code]}"` : '');
 
 	const renderToHTML = buildAsciiRenderer({
 		breakline: '<br>',
@@ -305,6 +305,10 @@ var jsAscii = (function (exports) {
 		renderToHTML,
 		renderToTTY,
 	};
+
+	if (typeof window === 'object' && typeof exports === 'object') {
+		window.jsAscii = exports;
+	}
 
 	exports.convert = convertAscii;
 	exports.buildRenderer = buildAsciiRenderer;

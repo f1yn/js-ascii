@@ -14,7 +14,7 @@ var generateClassAttribute = function generateClassAttribute(colorClass, code) {
 };
 
 var generateColorAttribute = function generateColorAttribute(styles, code) {
-  return typeof styles[code] === 'string' ? " styles=\"color:".concat(styles[code], "\"") : '';
+  return typeof styles[code] === 'string' ? " style=\"color:".concat(styles[code], "\"") : '';
 };
 
 var renderToHTML = (0, _renderer.default)({
