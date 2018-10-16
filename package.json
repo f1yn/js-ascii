@@ -1,6 +1,6 @@
 {
   "name": "js-ascii",
-  "version": "2.0.0",
+  "version": "1.0.1",
   "description": "An ascii art parser and renderer",
   "main": "dist/index.js",
   "scripts": {
@@ -20,6 +20,13 @@
     "type": "git",
     "url": "git+https://github.com/flynnham/js-ascii.git"
   },
+  "files": [
+    "dist/",
+    "lib/",
+    "source.js",
+    "LICENSE",
+    "README.md"
+  ],
   "author": "Flynn Buckingham",
   "license": "MIT",
   "bugs": {

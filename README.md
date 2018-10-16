@@ -1,6 +1,7 @@
 # js-ascii
 
 [![Build Status](https://travis-ci.org/flynnham/js-ascii.svg?branch=master)](https://travis-ci.org/flynnham/js-ascii)
+[![npm](https://img.shields.io/npm/v/js-ascii.svg)](https://www.npmjs.com/package/js-ascii)
 [![dependencies Status](https://david-dm.org/flynnham/js-ascii/status.svg)](https://david-dm.org/flynnham/js-ascii)
 [![devDependencies Status](https://david-dm.org/flynnham/js-ascii/dev-status.svg)](https://david-dm.org/flynnham/js-ascii?type=dev)
 
@@ -16,7 +17,7 @@ the specification of custom output formats via an internal API.
 
 ### via npm
 ```bash
-npm i -S flynnham/js-ascii
+npm i -S js-ascii
 ```
 
 ## How to use
