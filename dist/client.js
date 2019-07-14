@@ -41,8 +41,8 @@ var jsAscii = function (exports) {
           _iteratorError2 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-              _iterator2.return();
+            if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
+              _iterator2["return"]();
             }
           } finally {
             if (_didIteratorError2) {
@@ -59,8 +59,8 @@ var jsAscii = function (exports) {
       _iteratorError = err;
     } finally {
       try {
-        if (!_iteratorNormalCompletion && _iterator.return != null) {
-          _iterator.return();
+        if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+          _iterator["return"]();
         }
       } finally {
         if (_didIteratorError) {
@@ -273,8 +273,8 @@ var jsAscii = function (exports) {
           _iteratorError3 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion3 && _iterator3.return != null) {
-              _iterator3.return();
+            if (!_iteratorNormalCompletion3 && _iterator3["return"] != null) {
+              _iterator3["return"]();
             }
           } finally {
             if (_didIteratorError3) {
@@ -310,8 +310,8 @@ var jsAscii = function (exports) {
           _iteratorError4 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion4 && _iterator4.return != null) {
-              _iterator4.return();
+            if (!_iteratorNormalCompletion4 && _iterator4["return"] != null) {
+              _iterator4["return"]();
             }
           } finally {
             if (_didIteratorError4) {
@@ -333,7 +333,7 @@ var jsAscii = function (exports) {
     }
   });
   var colors = {
-    default: 39,
+    "default": 39,
     blink: 5,
     black: 30,
     red: 31,
@@ -377,7 +377,7 @@ var jsAscii = function (exports) {
 
           switch (_typeof(custom)) {
             case 'string':
-              if (colors[custom]) styles[code] = colors[custom];else styles[code] = colors.default;
+              if (colors[custom]) styles[code] = colors[custom];else styles[code] = colors["default"];
               break;
 
             case 'number':
@@ -385,7 +385,7 @@ var jsAscii = function (exports) {
               break;
 
             default:
-              styles[code] = colors.default;
+              styles[code] = colors["default"];
           }
         }
       } catch (err) {
@@ -393,8 +393,8 @@ var jsAscii = function (exports) {
         _iteratorError5 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion5 && _iterator5.return != null) {
-            _iterator5.return();
+          if (!_iteratorNormalCompletion5 && _iterator5["return"] != null) {
+            _iterator5["return"]();
           }
         } finally {
           if (_didIteratorError5) {
@@ -427,7 +427,7 @@ var jsAscii = function (exports) {
   exports.buildRenderer = buildAsciiRenderer;
   exports.renderToHTML = renderToHTML;
   exports.renderToTTY = renderToTTY;
-  exports.default = source;
+  exports["default"] = source;
   return exports;
 }({});
 

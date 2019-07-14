@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 /**
  * Created by Flynn Buckingham (https://github.com/flynnham) on 21/05/17.
@@ -41,8 +41,8 @@ function convertAscii(inputString) {
         _iteratorError2 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-            _iterator2.return();
+          if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
+            _iterator2["return"]();
           }
         } finally {
           if (_didIteratorError2) {
@@ -59,8 +59,8 @@ function convertAscii(inputString) {
     _iteratorError = err;
   } finally {
     try {
-      if (!_iteratorNormalCompletion && _iterator.return != null) {
-        _iterator.return();
+      if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+        _iterator["return"]();
       }
     } finally {
       if (_didIteratorError) {
@@ -86,4 +86,4 @@ function convertAscii(inputString) {
 }
 
 var _default = convertAscii;
-exports.default = _default;
+exports["default"] = _default;

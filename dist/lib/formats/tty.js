@@ -3,16 +3,16 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 var _renderer = _interopRequireDefault(require("../renderer"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 var colors = {
-  default: 39,
+  "default": 39,
   blink: 5,
   black: 30,
   red: 31,
@@ -41,7 +41,7 @@ var segment = function segment(code) {
   return "\x1B[".concat(code, "m");
 };
 
-var renderToTTY = (0, _renderer.default)({
+var renderToTTY = (0, _renderer["default"])({
   prepareScope: function prepareScope(options, colorCodes) {
     var customStyles = options.styles || {};
     var styles = {};
@@ -56,7 +56,7 @@ var renderToTTY = (0, _renderer.default)({
 
         switch (_typeof(custom)) {
           case 'string':
-            if (colors[custom]) styles[code] = colors[custom];else styles[code] = colors.default;
+            if (colors[custom]) styles[code] = colors[custom];else styles[code] = colors["default"];
             break;
 
           case 'number':
@@ -64,7 +64,7 @@ var renderToTTY = (0, _renderer.default)({
             break;
 
           default:
-            styles[code] = colors.default;
+            styles[code] = colors["default"];
         }
       }
     } catch (err) {
@@ -72,8 +72,8 @@ var renderToTTY = (0, _renderer.default)({
       _iteratorError = err;
     } finally {
       try {
-        if (!_iteratorNormalCompletion && _iterator.return != null) {
-          _iterator.return();
+        if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+          _iterator["return"]();
         }
       } finally {
         if (_didIteratorError) {
@@ -92,4 +92,4 @@ var renderToTTY = (0, _renderer.default)({
   }
 });
 var _default = renderToTTY;
-exports.default = _default;
+exports["default"] = _default;

@@ -3,11 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports["default"] = void 0;
 
 var _renderer = _interopRequireDefault(require("../renderer"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var generateClassAttribute = function generateClassAttribute(colorClass, code) {
   return typeof colorClass[code] === 'string' ? " class=\"".concat(colorClass[code], "\"") : '';
@@ -17,7 +17,7 @@ var generateColorAttribute = function generateColorAttribute(styles, code) {
   return typeof styles[code] === 'string' ? " style=\"color:".concat(styles[code], "\"") : '';
 };
 
-var renderToHTML = (0, _renderer.default)({
+var renderToHTML = (0, _renderer["default"])({
   breakline: '<br>',
   prepareScope: function prepareScope(options, colorCodes) {
     var styles = {};
@@ -39,8 +39,8 @@ var renderToHTML = (0, _renderer.default)({
         _iteratorError = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion && _iterator.return != null) {
-            _iterator.return();
+          if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+            _iterator["return"]();
           }
         } finally {
           if (_didIteratorError) {
@@ -76,8 +76,8 @@ var renderToHTML = (0, _renderer.default)({
         _iteratorError2 = err;
       } finally {
         try {
-          if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-            _iterator2.return();
+          if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
+            _iterator2["return"]();
           }
         } finally {
           if (_didIteratorError2) {
@@ -99,4 +99,4 @@ var renderToHTML = (0, _renderer.default)({
   }
 });
 var _default = renderToHTML;
-exports.default = _default;
+exports["default"] = _default;
