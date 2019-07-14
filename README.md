@@ -42,7 +42,7 @@ const colorizedHTML = jsAcii.renderToHTML(formattedArt, {
 // outputs: <span style="color:red">Hello </span><span style="color:#00f">World</span>
 
 const colorizedConsole = jsAcii.renderToTTY(formattedArt, {
-	// specifc console color cold (Number) or
+	// specific console color cold (Number) or
 	// string name
 	styles: {
 		1: 'red',
@@ -99,7 +99,7 @@ import 'js-acii/dist/condensed';
 Coming soon (refer to included inline `/lib` documentation)
 
 ### ASCII ART Editor
-A simple single-page HTML application has also been included in `/editor` fireactory
+A simple single-page HTML application has also been included in `/editor` direactory
 of this repository.
 
 At the bottom of the page, both of the compiled outputs will be updated as the input
